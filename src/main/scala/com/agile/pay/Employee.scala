@@ -1,26 +1,16 @@
 package com.agile.pay
 
-class Employee(name : String) {
+import scala.beans.BeanProperty
+
+
+class Employee(empId:Int,name : String,address:String) {
+  @BeanProperty
+  var classification : PaymentClassification = null
+  @BeanProperty
+  var schedule:PaymentSchedule = null
+  @BeanProperty
+  var method:PaymentMethod = null
   
-  val classification : PaymentClassification = null
-  val schedule:PaymentSchedule = null
-  val method:PaymentMethod = null
-  
-  def getName :String = {
-    name
-  }
-  
-  def getClassification :PaymentClassification  = {
-    classification
-  }
-  
-  def getSchedule :PaymentSchedule ={
-    schedule
-  }
-  
-  def getMethod : PaymentMethod={
-    method
-  }
   
   
 }

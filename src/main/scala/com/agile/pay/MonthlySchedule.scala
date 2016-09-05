@@ -1,5 +1,7 @@
 package com.agile.pay
 
-class MonthlySchedule {
+class MonthlySchedule extends PaymentSchedule{
+  
+  
   
 }

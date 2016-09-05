@@ -1,5 +1,5 @@
 package com.agile.pay
 
-class HoldMethod {
+class HoldMethod extends PaymentMethod{
   
 }

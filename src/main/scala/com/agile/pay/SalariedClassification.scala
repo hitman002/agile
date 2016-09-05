@@ -1,7 +1,8 @@
 package com.agile.pay
 
-class SalariedClassification extends PaymentClassification{
+import scala.beans.BeanProperty
+
+class SalariedClassification(@BeanProperty var salary:Double) extends PaymentClassification{
   
-  def getSalary:String = null
   
 }
