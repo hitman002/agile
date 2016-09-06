@@ -3,7 +3,7 @@ package com.agile.pay
 import scala.beans.BeanProperty
 
 
-class Employee(empId:Int,name : String,address:String) {
+class Employee(@BeanProperty var empId:Int,@BeanProperty var name : String,@BeanProperty var address:String) {
   @BeanProperty
   var classification : PaymentClassification = null
   @BeanProperty

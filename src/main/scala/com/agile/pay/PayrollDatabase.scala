@@ -1,18 +1,26 @@
 package com.agile.pay
 
-import scala.collection.immutable.Map
-import scala.collection.immutable.HashMap
+import scala.collection.mutable.Map
+import scala.collection.mutable.HashMap
 
 object PayrollDatabase {
    
   val itsEmployees:Map[Int,Employee] = new HashMap()
   
   def getEmployee(id:Int) :Employee= {
-    itsEmployees.apply(id)
+    if(itsEmployees.contains(id)){
+      itsEmployees(id)
+    }else{
+      null
+    }
   }
   
   def addEmployee(empId:Int,e:Employee) = {
-    itsEmployees.updated(empId,e)
+    itsEmployees += (empId -> e)
+  }
+
+  def deleteEmployee(empId: Int) = {
+    itsEmployees -= empId
   }
   
 }
