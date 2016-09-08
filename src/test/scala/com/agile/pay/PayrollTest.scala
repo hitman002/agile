@@ -1,5 +1,6 @@
 package com.agile.pay
 
+
 import org.junit.Assert
 import org.junit.Test
 
@@ -44,6 +45,29 @@ class PayrollTest {
     val e2 = PayrollDatabase.getEmployee(empId)
     Assert.assertNull(e2)
      
+  }
+  
+  @Test
+  def testTimeCardTransaction() = {
+    val empId = 2;
+    val t = new AddHourlyEmployee(empId,"Bill","Home",15.25)
+    
+    t.execute
+    
+    val time = new TimeCardTransaction(9854123l,8.0d,empId);
+    time.execute()
+    
+    val e = PayrollDatabase.getEmployee(empId)
+    Assert.assertNotNull(e)
+    
+    val pc = e.getClassification()
+    val hc = pc.asInstanceOf[HourlyClassification]
+    Assert.assertNotNull(hc)
+    
+    val tc = hc.getTimeCard()
+    Assert.assertNotNull(tc)
+    Assert.assertTrue(8.0 - tc.getHours() == 0.0)
+    
   }
   
   
