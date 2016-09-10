@@ -10,7 +10,6 @@ class Employee(@BeanProperty var empId:Int,@BeanProperty var name : String,@Bean
   var schedule:PaymentSchedule = null
   @BeanProperty
   var method:PaymentMethod = null
-  
-  
-  
+  @BeanProperty
+  var affiliation:UnionAffilication = null
 }

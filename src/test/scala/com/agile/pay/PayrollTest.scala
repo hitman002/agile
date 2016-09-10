@@ -70,6 +70,50 @@ class PayrollTest {
     
   }
   
+  @Test
+  def testAddServiceCharge(){
+    val empId = 2;
+    val t = new AddHourlyEmployee(empId,"Bill","Home",15.25)
+    t.execute
+    
+    val e = PayrollDatabase.getEmployee(empId)
+    Assert.assertNotNull(e)
+    
+    val memberId = 25
+    val af = new UnionAffilication(memberId,12.5)
+    
+    e.setAffiliation(af)
+    PayrollDatabase.addUnionMember(memberId,e)
+    
+    val sct = new ServiceChargeTransaction(memberId,20011101,12.95) 
+    sct.execute()
+    
+    val sc:ServiceCharge = af.getServiceCharge();  
+    Assert.assertNotNull(sc);
+    Assert.assertTrue(12.95d == sc.getAmount())
+    
+  }
+  
+  @Test
+  def testChangeNameTransaction(){
+    val empId = 2;
+    val t = new AddHourlyEmployee(empId,"Bill","Home",15.5)
+    t.execute
+    
+    val cnt = new ChangeNameTransaction(empId,"Bob");
+    cnt.execute
+    
+    val e = PayrollDatabase.getEmployee(empId)
+    Assert.assertNotNull(e)
+    
+    Assert.assertEquals(e.getName(),"Bob")
+    
+    
+    
+    
+    
+  }
+  
   
   
 }
