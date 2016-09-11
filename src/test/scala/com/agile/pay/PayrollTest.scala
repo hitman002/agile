@@ -108,9 +108,29 @@ class PayrollTest {
     
     Assert.assertEquals(e.getName(),"Bob")
     
+  }
+  
+  @Test def testChangeHourlyTransaction(){
+    val empId = 3;
+    val t = new AddCommissionedEmployee(empId,"Lance","Home",2500,3.2)
+    t.execute
     
+    val cht = new ChangeHourlyTransaction(empId,27.52)
+    cht.execute
     
+    val e = PayrollDatabase.getEmployee(empId)
+    Assert.assertNotNull(e)
     
+    val pc = e.getClassification()
+    Assert.assertNotNull(pc)
+    
+    val hc = pc.asInstanceOf[HourlyClassification]
+    Assert.assertNotNull(hc)
+    
+    Assert.assertEquals(27.52,hc.getRate());
+    val ps = e.getSchedule()
+    val ws = ps.asInstanceOf[WeeklySchedule]
+    Assert.assertNotNull(ws)
     
   }
   
