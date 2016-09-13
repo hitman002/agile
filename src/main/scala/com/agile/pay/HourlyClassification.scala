@@ -6,6 +6,8 @@ class HourlyClassification(@BeanProperty var timeCard:TimeCard,@BeanProperty var
   
   def this() = this(null,0d)
   
+  def this(rate:Double) = this(null,rate)
+  
   def addTimeCard(timeCard:TimeCard) = {
     setTimeCard(timeCard)
   }

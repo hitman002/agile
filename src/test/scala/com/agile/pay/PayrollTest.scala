@@ -121,16 +121,31 @@ class PayrollTest {
     val e = PayrollDatabase.getEmployee(empId)
     Assert.assertNotNull(e)
     
-    val pc = e.getClassification()
+    var pc = e.getClassification()
     Assert.assertNotNull(pc)
     
     val hc = pc.asInstanceOf[HourlyClassification]
     Assert.assertNotNull(hc)
     
-    Assert.assertEquals(27.52,hc.getRate());
-    val ps = e.getSchedule()
+    Assert.assertTrue(27.52 == hc.getRate());
+    var ps = e.getSchedule()
     val ws = ps.asInstanceOf[WeeklySchedule]
     Assert.assertNotNull(ws)
+    
+    
+    val cst = new ChangeSalariedTransaction(empId,4000)
+    cst.execute
+    
+    pc = e.getClassification();
+    
+    val sc = pc.asInstanceOf[SalariedClassification]
+    Assert.assertTrue(4000 == sc.getSalary());
+    
+    ps = e.getSchedule()
+    val ms = ps.asInstanceOf[MonthlySchedule]
+    Assert.assertNotNull(ms)
+
+    
     
   }
   
