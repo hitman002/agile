@@ -145,9 +145,33 @@ class PayrollTest {
     val ms = ps.asInstanceOf[MonthlySchedule]
     Assert.assertNotNull(ms)
 
+  }
+  
+  @Test def testChangeMemberTransaction(){
     
     
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
