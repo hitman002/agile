@@ -2,7 +2,7 @@ package com.agile.pay
 
 import scala.beans.BeanProperty
 
-class UnionAffilication(memberId:Int, charge:Double) {
+class UnionAffilication(@BeanProperty var memberId:Int,@BeanProperty var dues:Double) extends Affiliation{
   
   @BeanProperty
   var serviceCharge:ServiceCharge = null;

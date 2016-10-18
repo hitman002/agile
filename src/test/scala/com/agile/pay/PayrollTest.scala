@@ -148,9 +148,33 @@ class PayrollTest {
   }
   
   @Test def testChangeMemberTransaction(){
+    val empId = 2;
+    val memberId = 7734;
     
+    val t = new AddHourlyEmployee(empId,"Bill","Home",15.25);
+    t.execute
     
+    val cmt = new ChangeMemberTransaction(empId,memberId,99.42);
+    cmt.execute
+    
+    val e = PayrollDatabase.getEmployee(empId);
+    Assert.assertNotNull(e);
+    
+    val af = e.getAffiliation()
+    Assert.assertNotNull(af);
+    
+    val uf = af.asInstanceOf[UnionAffilication]
+    Assert.assertNotNull(uf);
+    
+    Assert.assertTrue(99.42==uf.getDues())
+    
+    val member = PayrollDatabase.getUnionMember(memberId);
+    Assert.assertNotNull(member);
+    Assert.assertEquals(e,member);
+  
   }
+  
+  
   
   
   

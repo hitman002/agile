@@ -36,5 +36,9 @@ object PayrollDatabase {
     	null
     }
   }
+
+  def removeUnionMember(memberId: Int) = {
+    itsMembers.remove(memberId)
+  }
   
 }

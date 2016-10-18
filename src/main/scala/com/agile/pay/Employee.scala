@@ -11,5 +11,5 @@ class Employee(@BeanProperty var empId:Int,@BeanProperty var name : String,@Bean
   @BeanProperty
   var method:PaymentMethod = null
   @BeanProperty
-  var affiliation:UnionAffilication = null
+  var affiliation:Affiliation = null
 }
