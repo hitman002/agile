@@ -1,5 +1,9 @@
 package com.agile.pay
 
-class BiweeklySchedule extends PaymentSchedule{
-  
+import java.util.Date
+
+class BiweeklySchedule extends PaymentSchedule {
+  def getPayPeriodStartDate(payDate: Date): Date = {
+    ???
+  }
 }

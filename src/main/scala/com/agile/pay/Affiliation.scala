@@ -1,5 +1,5 @@
 package com.agile.pay
 
-class Affiliation {
-  
+abstract class Affiliation {
+  def calculateDeductions(pc: PayCheck):Double;
 }

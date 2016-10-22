@@ -1,5 +1,11 @@
 package com.agile.pay
 
-class PaymentSchedule {
-  
+import java.util.Date
+
+abstract class PaymentSchedule {
+  def isPayDate(payDate: Date):Boolean = {
+    true
+  }
+
+  def getPayPeriodStartDate(payDate: Date):Date;
 }

@@ -1,6 +1,8 @@
 package com.agile.pay
 
-class TimeCardTransaction(date:Long,hours:Double,empId:Int) extends Transaction {
+import java.util.Date
+
+class TimeCardTransaction(date:Date,hours:Double,empId:Int) extends Transaction {
   
   def execute(): Unit = {
     val e = PayrollDatabase.getEmployee(empId)

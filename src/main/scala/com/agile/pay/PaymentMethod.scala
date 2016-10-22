@@ -1,5 +1,8 @@
 package com.agile.pay
 
-class PaymentMethod {
-  
+import java.util.Date
+
+abstract class PaymentMethod {
+  def pay(pc: PayCheck);
+
 }

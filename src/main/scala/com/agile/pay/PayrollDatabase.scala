@@ -24,6 +24,11 @@ object PayrollDatabase {
   def deleteEmployee(empId: Int) = {
     itsEmployees -= empId
   }
+  
+  def getAllEmployee():Iterable[Employee] = {
+    itsEmployees.values
+  }
+  
 
   def addUnionMember(memberId: Int, e: Employee) = {
     itsMembers += (memberId -> e)
@@ -40,5 +45,6 @@ object PayrollDatabase {
   def removeUnionMember(memberId: Int) = {
     itsMembers.remove(memberId)
   }
+
   
 }
